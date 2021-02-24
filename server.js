@@ -12,10 +12,10 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
+
 app.use(bodyParser.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
@@ -35,17 +35,15 @@ db.mongoose
     process.exit();
   });
 
-// simple route
 app.get("/", (req, res) => {
   res.json({ message: "Bienvenido a la aplicacion" });
 });
 
-// routes
+
 require("./app/routes/auth.routes")(app);
 require("./app/routes/user.routes")(app);
 require("./app/routes/product.routes")(app);
 
-// set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}.`);

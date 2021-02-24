@@ -8,7 +8,6 @@ exports.create = (req, res) => {
     return;
   }
 
-  // Create a Product
   const product = new Product({
     title: req.body.title,
     price: req.body.price,
